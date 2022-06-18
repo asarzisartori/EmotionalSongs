@@ -10,7 +10,6 @@
 
 package core;
 
-import eatadvisor.utilities.Metodi;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -240,67 +239,67 @@ public class Ristoratori extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_registrazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrazioneActionPerformed
-        Pattern PHONE_PATTERN = Pattern.compile("^\\+(?:[0-9] ?){6,14}[0-9]$");
-        Pattern SITE_PATTERN = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", Pattern.CASE_INSENSITIVE);
-        
-        String name = txt_name.getText();
-        String tipologia = cmb_tipologia.getSelectedItem().toString();
-        String telefono = txt_telefono.getText();
-        String sito = txt_sito.getText();
-        String qualificatore = cmb_qualificatore.getSelectedItem().toString();
-        String indirizzo = txt_indirizzo.getText();
-        String civico = txt_civico.getText();
-        String comune = txt_comune.getText();
-        String sigla = txt_sigla.getText();
-        int cap;
-        try {
-            cap = Integer.parseInt(txt_cap.getText());
-        } catch (Exception ex) {
-            cap = 0;
-        }
-
-        Boolean ok =
-        !name.equals("") &&
-        !telefono.equals("") &&
-        !sito.equals("") &&
-        !indirizzo.equals("") &&
-        !civico.equals("") &&
-        !comune.equals("") &&
-        !sigla.equals("") &&
-        sigla.length() == 2 &&
-        cap > 9999 &&
-        (PHONE_PATTERN.matcher(telefono)).matches() &&
-        (SITE_PATTERN.matcher(sito)).matches();
-        
-        Boolean nome_ristorante_usato = false;
-        
-        ArrayList<Ristorante> ristoranti = Metodi.LeggiRistoranti();
-        for (Ristorante r : ristoranti) {
-            if (name.equals(r.nome)) {
-                nome_ristorante_usato = true;
-            }
-        }
-        
-        if(ok) {
-            if(!nome_ristorante_usato) {
-                Ristorante ristorante = new Ristorante(name, tipologia, telefono, sito, qualificatore, indirizzo, civico, comune, sigla, cap);
-                Metodi.ScriviRistorante(ristorante);
-                javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Registrazione completata!", "", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                txt_name.setText("");
-                txt_telefono.setText("");
-                txt_sito.setText("");
-                txt_indirizzo.setText("");
-                txt_civico.setText("");
-                txt_comune.setText("");
-                txt_sigla.setText("");
-                txt_cap.setText("");
-                
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Nome ristorante già in uso", "Errore", javax.swing.JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Controlla i dati!", "Errore", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }                 
+//        Pattern PHONE_PATTERN = Pattern.compile("^\\+(?:[0-9] ?){6,14}[0-9]$");
+//        Pattern SITE_PATTERN = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", Pattern.CASE_INSENSITIVE);
+//        
+//        String name = txt_name.getText();
+//        String tipologia = cmb_tipologia.getSelectedItem().toString();
+//        String telefono = txt_telefono.getText();
+//        String sito = txt_sito.getText();
+//        String qualificatore = cmb_qualificatore.getSelectedItem().toString();
+//        String indirizzo = txt_indirizzo.getText();
+//        String civico = txt_civico.getText();
+//        String comune = txt_comune.getText();
+//        String sigla = txt_sigla.getText();
+//        int cap;
+//        try {
+//            cap = Integer.parseInt(txt_cap.getText());
+//        } catch (Exception ex) {
+//            cap = 0;
+//        }
+//
+//        Boolean ok =
+//        !name.equals("") &&
+//        !telefono.equals("") &&
+//        !sito.equals("") &&
+//        !indirizzo.equals("") &&
+//        !civico.equals("") &&
+//        !comune.equals("") &&
+//        !sigla.equals("") &&
+//        sigla.length() == 2 &&
+//        cap > 9999 &&
+//        (PHONE_PATTERN.matcher(telefono)).matches() &&
+//        (SITE_PATTERN.matcher(sito)).matches();
+//        
+//        Boolean nome_ristorante_usato = false;
+//        
+//        ArrayList<Ristorante> ristoranti = Metodi.LeggiRistoranti();
+//        for (Ristorante r : ristoranti) {
+//            if (name.equals(r.nome)) {
+//                nome_ristorante_usato = true;
+//            }
+//        }
+//        
+//        if(ok) {
+//            if(!nome_ristorante_usato) {
+//                Ristorante ristorante = new Ristorante(name, tipologia, telefono, sito, qualificatore, indirizzo, civico, comune, sigla, cap);
+//                Metodi.ScriviRistorante(ristorante);
+//                javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Registrazione completata!", "", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+//                txt_name.setText("");
+//                txt_telefono.setText("");
+//                txt_sito.setText("");
+//                txt_indirizzo.setText("");
+//                txt_civico.setText("");
+//                txt_comune.setText("");
+//                txt_sigla.setText("");
+//                txt_cap.setText("");
+//                
+//            } else {
+//                javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Nome ristorante già in uso", "Errore", javax.swing.JOptionPane.ERROR_MESSAGE);
+//            }
+//        } else {
+//            javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Controlla i dati!", "Errore", javax.swing.JOptionPane.ERROR_MESSAGE);
+//        }                 
     }//GEN-LAST:event_btn_registrazioneActionPerformed
 
     private void cmb_tipologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_tipologiaActionPerformed

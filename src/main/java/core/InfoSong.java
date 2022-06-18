@@ -1,8 +1,5 @@
 package core;
 
-import eatadvisor.ristoratori.Giudizio;
-import eatadvisor.ristoratori.Ristorante;
-import eatadvisor.utilities.Metodi;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -180,31 +177,31 @@ public class InfoSong extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_giudicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_giudicaActionPerformed
-        if(!accesso_libero && nickname != null) {   
-            Giudizio g = new Giudizio((int)sp_voto.getValue(), nickname, txt_commento.getText());
-            ristorante.giudizi.add(g);
-            List<Ristorante> list = Metodi.LeggiRistoranti();
-            for(int i = 0; i < list.size(); i++) {
-                if(list.get(i).nome.equals(ristorante.nome)) {
-                    list.set(i, ristorante);
-                    break;
-                }
-            }
-            Metodi.ScriviRistoranti(list);
-
-            DefaultListModel listModel = (DefaultListModel)list_giudizi.getModel();
-            listModel.removeAllElements();
-            if(ristorante.giudizi.size() > 0) {
-                for (int i = 0; i < ristorante.giudizi.size(); i++)
-                {
-                    listModel.addElement(ristorante.giudizi.get(i).toString());
-                }
-            } else {
-                listModel.addElement("Vuoto");
-            }
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Devi essere loggato per aggiungere un giudizio", "", javax.swing.JOptionPane.WARNING_MESSAGE);
-        }
+//        if(!accesso_libero && nickname != null) {   
+//            Giudizio g = new Giudizio((int)sp_voto.getValue(), nickname, txt_commento.getText());
+//            ristorante.giudizi.add(g);
+//            List<Ristorante> list = Metodi.LeggiRistoranti();
+//            for(int i = 0; i < list.size(); i++) {
+//                if(list.get(i).nome.equals(ristorante.nome)) {
+//                    list.set(i, ristorante);
+//                    break;
+//                }
+//            }
+//            Metodi.ScriviRistoranti(list);
+//
+//            DefaultListModel listModel = (DefaultListModel)list_giudizi.getModel();
+//            listModel.removeAllElements();
+//            if(ristorante.giudizi.size() > 0) {
+//                for (int i = 0; i < ristorante.giudizi.size(); i++)
+//                {
+//                    listModel.addElement(ristorante.giudizi.get(i).toString());
+//                }
+//            } else {
+//                listModel.addElement("Vuoto");
+//            }
+//        } else {
+//            javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Devi essere loggato per aggiungere un giudizio", "", javax.swing.JOptionPane.WARNING_MESSAGE);
+//        }
     }//GEN-LAST:event_btn_giudicaActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
