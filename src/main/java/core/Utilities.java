@@ -9,22 +9,23 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.*;
+import models.Song;
 
 public class Utilities {
     
-    // credenziali final per l'accesso al DB
+    //Credenziali final per l'accesso al DB
     private final String url = "jdbc:postgresql://localhost:8996/postgres";
     private final String user = "postgres";
     private final String password = "admin";
     
-    // permette la connessione al database
+    //Permette la connessione al database
     public Connection Connect() {
         
         Connection connection = null;
         
         try {
             connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Connessione al database effettuata con successo.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -36,11 +37,119 @@ public class Utilities {
         
     }
     
-    public void visualizzaEmozioneBrano() {
+    public ArrayList<float[]> visualizzaEmozioneBrano(String idCanzone) {
         
+        ArrayList<float[]> results = new ArrayList<>();
+        
+        try
+        {
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs_rabbia = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Rabbia' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_rabbia.isBeforeFirst()) {
+                float[] rabbia = {0};
+                results.add(rabbia);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_rabbia.next()) {
+                    count = rs_rabbia.getInt("total");
+                }
+                ResultSet rs_rabbia_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Rabbia' AND idCanzone = '" + idCanzone + "'");
+                while (rs_rabbia_avg.next()) {
+                    avg = rs_rabbia_avg.getFloat(1);
+                }
+                float[] rabbia = {count, avg};
+                results.add(rabbia);
+            }
+            
+            ResultSet rs_paura = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Paura' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_paura.isBeforeFirst()) {
+                float[] paura = {0};
+                results.add(paura);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_paura.next()) {
+                    count = rs_paura.getInt("total");
+                }
+                ResultSet rs_paura_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Paura' AND idCanzone = '" + idCanzone + "'");
+                while (rs_paura_avg.next()) {
+                    avg = rs_paura_avg.getFloat(1);
+                }
+                float[] paura = {count, avg};
+                results.add(paura);
+            }
+            
+            ResultSet rs_felicita = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Felicità' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_felicita.isBeforeFirst()) {
+                float[] felicita = {0};
+                results.add(felicita);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_felicita.next()) {
+                    count = rs_felicita.getInt("total");
+                }
+                ResultSet rs_felicita_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Felicità' AND idCanzone = '" + idCanzone + "'");
+                while (rs_felicita_avg.next()) {
+                    avg = rs_felicita_avg.getFloat(1);
+                }
+                float[] felicita = {count, avg};
+                results.add(felicita);
+            }
+            
+            ResultSet rs_nostalgia = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Nostalgia' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_nostalgia.isBeforeFirst()) {
+                float[] nostalgia = {0};
+                results.add(nostalgia);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_nostalgia.next()) {
+                    count = rs_nostalgia.getInt("total");
+                }
+                ResultSet rs_nostalgia_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Nostalgia' AND idCanzone = '" + idCanzone + "'");
+                while (rs_nostalgia_avg.next()) {
+                    avg = rs_nostalgia_avg.getFloat(1);
+                }
+                float[] nostalgia = {count, avg};
+                results.add(nostalgia);
+            }
+            
+            ResultSet rs_tristezza = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Tristezza' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_tristezza.isBeforeFirst()) {
+                float[] tristezza = {0};
+                results.add(tristezza);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_tristezza.next()) {
+                    count = rs_tristezza.getInt("total");
+                }
+                ResultSet rs_tristezza_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Tristezza' AND idCanzone = '" + idCanzone + "'");
+                while (rs_tristezza_avg.next()) {
+                    avg = rs_tristezza_avg.getFloat(1);
+                }
+                float[] tristezza = {count, avg};
+                results.add(tristezza);
+            }
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return results;
     }
     
-    public void RegistraPlaylist() {
+    public void registraPlaylist() {
         
     }
     
@@ -151,20 +260,20 @@ public class Utilities {
             Connection connection = Connect();
             Statement stmt = connection.createStatement();
             
-            ResultSet rs = stmt.executeQuery("SELECT Anno, Autore, Titolo FROM public.canzoni WHERE autore = '" + author + "' AND anno = '" + year + "'");
+            ResultSet rs = stmt.executeQuery("SELECT Id, Anno, Autore, Titolo FROM public.canzoni WHERE autore = '" + author + "' AND anno = '" + year + "'");
             
             if (!rs.isBeforeFirst())
             {
                 return null;
             }
             
-            while (rs.next()) 
-            {
-               Object[] song = new Object[3];
+            while (rs.next()) {
+               Object[] song = new Object[4];
                
-               song[0] = rs.getString("titolo");
-               song[1] = rs.getString("autore");
-               song[2] = rs.getInt("anno");
+               song[0] = rs.getString("id");
+               song[1] = rs.getString("titolo");
+               song[2] = rs.getString("autore");
+               song[3] = rs.getString("anno");
               
                results.add(song);
             }
@@ -175,6 +284,69 @@ public class Utilities {
         }
         
         return results;
+    }
+    
+    public ArrayList<Object[]> getSongsByTitle(String title) {
+        
+        ArrayList<Object[]> results = new ArrayList<>();
+        
+        try
+        {
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT Id, Anno, Autore, Titolo FROM public.canzoni WHERE LOWER(Titolo) LIKE LOWER('%" + title + "%')");
+            
+            if (!rs.isBeforeFirst())
+            {
+                return null;
+            }
+            
+            while (rs.next()) {
+               Object[] song = new Object[4];
+               
+               song[0] = rs.getString("id");
+               song[1] = rs.getString("titolo");
+               song[2] = rs.getString("autore");
+               song[3] = rs.getString("anno");
+              
+               results.add(song);
+            }
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return results;
+    }
+    
+    public Song getSongsById(String id) {
+
+        Song song = null;
+        
+        try
+        {
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM public.canzoni WHERE id = '" + id + "'");
+            
+            if (!rs.isBeforeFirst())
+            {
+                return null;
+            }
+            
+            while (rs.next()) {
+                song = new Song(rs.getString("id"), rs.getString("titolo"), rs.getString("autore"), rs.getString("anno"));
+            }
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return song;
     }
     
 }

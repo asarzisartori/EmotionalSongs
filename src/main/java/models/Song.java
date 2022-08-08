@@ -2,17 +2,16 @@ package models;
 
 public class Song {
 
-    private int anno;
+    private String anno;
     private String autore;
     private String titolo;
-    private String album;
+    private String id;
 
-    public Song(int anno, String autore, String titolo, String album) {
-        
+    public Song(String id, String titolo, String autore, String anno) {
         this.anno = anno;
         this.autore = autore;
         this.titolo = titolo;
-        this.album = album;
+        this.id = id;
     }
     
     public Song() { }
@@ -20,7 +19,7 @@ public class Song {
     /**
      * @return anno
      */
-    public int getAnno() {
+    public String getYear() {
         return anno;
     }
 
@@ -37,15 +36,15 @@ public class Song {
     public String getTitle() {
         return titolo;
     }
-
+    
     /**
-     * @return album
+     * @return id
      */
-    public String getAlbum() {
-        return album;
+    public String getId() {
+        return id;
     }
     
-    public void setAnno(int anno) {
+    public void setYear(String anno) {
         this.anno = anno;
     }
     
@@ -54,7 +53,10 @@ public class Song {
     }
 
     public void setTitle(String titolo) {
-        this.titolo =  titolo;
+        this.titolo = titolo;
     }
     
+    public void setId(String id) {
+        this.id = id;
+    }
 }

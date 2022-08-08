@@ -11,7 +11,6 @@ public class RegisteredUser {
     private String password;
 
     public RegisteredUser(String nome, String cognome, String CF, String indirizzo, String email, String username, String password) {
-        
         this.nome = nome;
         this.cognome = cognome;
         this.CF = CF;

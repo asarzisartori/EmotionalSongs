@@ -9,6 +9,8 @@
  */
 package core;
 
+import models.GlobalUserLogin;
+
 /**
  * Classe che permette di fare Login, Registrarsi o accedere all'Accesso Libero dell'applicazione EmotionalSongs
  * @author Cervini Samuele
@@ -166,9 +168,10 @@ public class EmotionalSongs extends javax.swing.JFrame {
             
             if (checkIfUserIsRegistered)
             {
+                GlobalUserLogin.isUserLogged = true;
+                GlobalUserLogin.currentUsername = nickname;
                 dispose();
-                Search search = new Search(false, nickname);
-                search.accesso_libero = false;
+                Search search = new Search();
                 search.setVisible(true);
             }
             else 
@@ -193,7 +196,7 @@ public class EmotionalSongs extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_liberoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_liberoActionPerformed
-        Search search = new Search(true, null);
+        Search search = new Search();
         search.setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_liberoActionPerformed
