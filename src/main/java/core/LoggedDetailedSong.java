@@ -36,24 +36,24 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
         Font font = new Font("Segou UI", Font.ITALIC, 16);
         
         if (results.get(0)[0] == 0.0) {
-            detailedsong_rabbia.setFont(font);
-            detailedsong_rabbia.setText("Questa emozione non è stata ancora provata da nessun utente.");
+            detailedsong_potere.setFont(font);
+            detailedsong_potere.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_rabbia.setText("Questa emozione è stata provata da " + Math.round(results.get(0)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(0)[1] + ".");
+            detailedsong_potere.setText("Questa emozione è stata provata da " + Math.round(results.get(0)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(0)[1] + ".");
         }
         
         if (results.get(1)[0] == 0.0) {
-            detailedsong_paura.setFont(font);
-            detailedsong_paura.setText("Questa emozione non è stata ancora provata da nessun utente.");
+            detailedsong_gioia.setFont(font);
+            detailedsong_gioia.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_paura.setText("Questa emozione è stata provata da " + Math.round(results.get(1)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(1)[1] + ".");
+            detailedsong_gioia.setText("Questa emozione è stata provata da " + Math.round(results.get(1)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(1)[1] + ".");
         }
         
         if (results.get(2)[0] == 0.0) {
-            detailedsong_felicita.setFont(font);
-            detailedsong_felicita.setText("Questa emozione non è stata ancora provata da nessun utente.");
+            detailedsong_tensione.setFont(font);
+            detailedsong_tensione.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_felicita.setText("Questa emozione è stata provata da " + Math.round(results.get(2)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(2)[1] + ".");
+            detailedsong_tensione.setText("Questa emozione è stata provata da " + Math.round(results.get(2)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(2)[1] + ".");
         }
         
         if (results.get(3)[0] == 0.0) {
@@ -68,6 +68,34 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
             detailedsong_tristezza.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
             detailedsong_tristezza.setText("Questa emozione è stata provata da " + Math.round(results.get(4)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(4)[1] + ".");
+        }
+        
+        if (results.get(5)[0] == 0.0) {
+            detailedsong_stupore.setFont(font);
+            detailedsong_stupore.setText("Questa emozione non è stata ancora provata da nessun utente.");
+        } else {
+            detailedsong_stupore.setText("Questa emozione è stata provata da " + Math.round(results.get(5)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(5)[1] + ".");
+        }
+        
+        if (results.get(6)[0] == 0.0) {
+            detailedsong_solennita.setFont(font);
+            detailedsong_solennita.setText("Questa emozione non è stata ancora provata da nessun utente.");
+        } else {
+            detailedsong_solennita.setText("Questa emozione è stata provata da " + Math.round(results.get(6)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(6)[1] + ".");
+        }
+        
+        if (results.get(7)[0] == 0.0) {
+            detailedsong_tenerezza.setFont(font);
+            detailedsong_tenerezza.setText("Questa emozione non è stata ancora provata da nessun utente.");
+        } else {
+            detailedsong_tenerezza.setText("Questa emozione è stata provata da " + Math.round(results.get(7)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(7)[1] + ".");
+        }
+        
+        if (results.get(8)[0] == 0.0) {
+            detailedsong_calma.setFont(font);
+            detailedsong_calma.setText("Questa emozione non è stata ancora provata da nessun utente.");
+        } else {
+            detailedsong_calma.setText("Questa emozione è stata provata da " + Math.round(results.get(8)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(8)[1] + ".");
         }
     }
     
@@ -96,12 +124,20 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        detailedsong_rabbia = new javax.swing.JLabel();
-        detailedsong_paura = new javax.swing.JLabel();
-        detailedsong_felicita = new javax.swing.JLabel();
+        detailedsong_potere = new javax.swing.JLabel();
+        detailedsong_gioia = new javax.swing.JLabel();
+        detailedsong_tensione = new javax.swing.JLabel();
         detailedsong_nostalgia = new javax.swing.JLabel();
         detailedsong_tristezza = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        detailedsong_stupore = new javax.swing.JLabel();
+        detailedsong_solennita = new javax.swing.JLabel();
+        detailedsong_tenerezza = new javax.swing.JLabel();
+        detailedsong_calma = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,13 +172,13 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
         jLabel5.setText("Riassunto emozioni:");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel7.setText("Rabbia:");
+        jLabel7.setText("Potere:");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel8.setText("Paura:");
+        jLabel8.setText("Gioia:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel9.setText("Felicità:");
+        jLabel9.setText("Tensione");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel10.setText("Nostalgia:");
@@ -150,14 +186,14 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel11.setText("Tristezza:");
 
-        detailedsong_rabbia.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        detailedsong_rabbia.setText("rabbia");
+        detailedsong_potere.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        detailedsong_potere.setText("potere");
 
-        detailedsong_paura.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        detailedsong_paura.setText("paura");
+        detailedsong_gioia.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        detailedsong_gioia.setText("gioia");
 
-        detailedsong_felicita.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        detailedsong_felicita.setText("felicità");
+        detailedsong_tensione.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        detailedsong_tensione.setText("tensione");
 
         detailedsong_nostalgia.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         detailedsong_nostalgia.setText("nostalgia");
@@ -171,6 +207,30 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel12.setText("Stupore:");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel13.setText("Solennità:");
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel14.setText("Tenerezza:");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel15.setText("Calma:");
+
+        detailedsong_stupore.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        detailedsong_stupore.setText("stupore");
+
+        detailedsong_solennita.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        detailedsong_solennita.setText("solennità");
+
+        detailedsong_tenerezza.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        detailedsong_tenerezza.setText("tenerezza");
+
+        detailedsong_calma.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        detailedsong_calma.setText("calma");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,15 +264,31 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
                                     .addComponent(jLabel11))
                                 .addGap(45, 45, 45)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(detailedsong_felicita)
-                                    .addComponent(detailedsong_paura)
-                                    .addComponent(detailedsong_rabbia)
+                                    .addComponent(detailedsong_tensione)
+                                    .addComponent(detailedsong_gioia)
+                                    .addComponent(detailedsong_potere)
                                     .addComponent(detailedsong_nostalgia)
-                                    .addComponent(detailedsong_tristezza)))))
+                                    .addComponent(detailedsong_tristezza)
+                                    .addComponent(detailedsong_stupore)
+                                    .addComponent(detailedsong_solennita)
+                                    .addComponent(detailedsong_tenerezza)
+                                    .addComponent(detailedsong_calma)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(jButton2)))
-                .addContainerGap(405, Short.MAX_VALUE))
+                        .addGap(386, 386, 386)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel12))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel13))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel15)))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,15 +316,15 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(detailedsong_rabbia))
+                    .addComponent(detailedsong_potere))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(detailedsong_paura))
+                    .addComponent(detailedsong_gioia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(detailedsong_felicita))
+                    .addComponent(detailedsong_tensione))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -257,23 +333,41 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(detailedsong_tristezza))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(detailedsong_stupore))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(detailedsong_solennita))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(detailedsong_tenerezza))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(detailedsong_calma))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -323,11 +417,15 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel detailedsong_author;
-    private javax.swing.JLabel detailedsong_felicita;
+    private javax.swing.JLabel detailedsong_calma;
+    private javax.swing.JLabel detailedsong_gioia;
     private javax.swing.JLabel detailedsong_id;
     private javax.swing.JLabel detailedsong_nostalgia;
-    private javax.swing.JLabel detailedsong_paura;
-    private javax.swing.JLabel detailedsong_rabbia;
+    private javax.swing.JLabel detailedsong_potere;
+    private javax.swing.JLabel detailedsong_solennita;
+    private javax.swing.JLabel detailedsong_stupore;
+    private javax.swing.JLabel detailedsong_tenerezza;
+    private javax.swing.JLabel detailedsong_tensione;
     private javax.swing.JLabel detailedsong_title;
     private javax.swing.JLabel detailedsong_tristezza;
     private javax.swing.JLabel detailedsong_year;
@@ -335,6 +433,10 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -46,61 +46,61 @@ public class Utilities {
             Connection connection = Connect();
             Statement stmt = connection.createStatement();
             
-            ResultSet rs_rabbia = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Rabbia' AND idcanzone = '" + idCanzone + "'");
+            ResultSet rs_potere = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Potere' AND idcanzone = '" + idCanzone + "'");
             
-            if (!rs_rabbia.isBeforeFirst()) {
-                float[] rabbia = {0};
-                results.add(rabbia);
+            if (!rs_potere.isBeforeFirst()) {
+                float[] potere = {0};
+                results.add(potere);
             } else {
                 float count = 0;
                 float avg = 0;
-                while (rs_rabbia.next()) {
-                    count = rs_rabbia.getInt("total");
+                while (rs_potere.next()) {
+                    count = rs_potere.getInt("total");
                 }
-                ResultSet rs_rabbia_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Rabbia' AND idCanzone = '" + idCanzone + "'");
-                while (rs_rabbia_avg.next()) {
-                    avg = rs_rabbia_avg.getFloat(1);
+                ResultSet rs_potere_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Potere' AND idCanzone = '" + idCanzone + "'");
+                while (rs_potere_avg.next()) {
+                    avg = rs_potere_avg.getFloat(1);
                 }
-                float[] rabbia = {count, avg};
-                results.add(rabbia);
+                float[] potere = {count, avg};
+                results.add(potere);
             }
             
-            ResultSet rs_paura = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Paura' AND idcanzone = '" + idCanzone + "'");
+            ResultSet rs_gioia = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Gioia' AND idcanzone = '" + idCanzone + "'");
             
-            if (!rs_paura.isBeforeFirst()) {
-                float[] paura = {0};
-                results.add(paura);
+            if (!rs_gioia.isBeforeFirst()) {
+                float[] goia = {0};
+                results.add(goia);
             } else {
                 float count = 0;
                 float avg = 0;
-                while (rs_paura.next()) {
-                    count = rs_paura.getInt("total");
+                while (rs_gioia.next()) {
+                    count = rs_gioia.getInt("total");
                 }
-                ResultSet rs_paura_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Paura' AND idCanzone = '" + idCanzone + "'");
-                while (rs_paura_avg.next()) {
-                    avg = rs_paura_avg.getFloat(1);
+                ResultSet rs_gioia_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Gioia' AND idCanzone = '" + idCanzone + "'");
+                while (rs_gioia_avg.next()) {
+                    avg = rs_gioia_avg.getFloat(1);
                 }
-                float[] paura = {count, avg};
-                results.add(paura);
+                float[] goia = {count, avg};
+                results.add(goia);
             }
             
-            ResultSet rs_felicita = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Felicità' AND idcanzone = '" + idCanzone + "'");
+            ResultSet rs_tensione = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Tensione' AND idcanzone = '" + idCanzone + "'");
             
-            if (!rs_felicita.isBeforeFirst()) {
-                float[] felicita = {0};
-                results.add(felicita);
+            if (!rs_tensione.isBeforeFirst()) {
+                float[] tensione = {0};
+                results.add(tensione);
             } else {
                 float count = 0;
                 float avg = 0;
-                while (rs_felicita.next()) {
-                    count = rs_felicita.getInt("total");
+                while (rs_tensione.next()) {
+                    count = rs_tensione.getInt("total");
                 }
-                ResultSet rs_felicita_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Felicità' AND idCanzone = '" + idCanzone + "'");
-                while (rs_felicita_avg.next()) {
-                    avg = rs_felicita_avg.getFloat(1);
+                ResultSet rs_tensione_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Tensione' AND idCanzone = '" + idCanzone + "'");
+                while (rs_tensione_avg.next()) {
+                    avg = rs_tensione_avg.getFloat(1);
                 }
-                float[] felicita = {count, avg};
-                results.add(felicita);
+                float[] tensione = {count, avg};
+                results.add(tensione);
             }
             
             ResultSet rs_nostalgia = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Nostalgia' AND idcanzone = '" + idCanzone + "'");
@@ -139,6 +139,82 @@ public class Utilities {
                 }
                 float[] tristezza = {count, avg};
                 results.add(tristezza);
+            }
+            
+            ResultSet rs_stupore = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Stupore' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_stupore.isBeforeFirst()) {
+                float[] stupore = {0};
+                results.add(stupore);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_stupore.next()) {
+                    count = rs_stupore.getInt("total");
+                }
+                ResultSet rs_stupore_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Stupore' AND idCanzone = '" + idCanzone + "'");
+                while (rs_stupore_avg.next()) {
+                    avg = rs_stupore_avg.getFloat(1);
+                }
+                float[] stupore = {count, avg};
+                results.add(stupore);
+            }
+            
+            ResultSet rs_solennita = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Solennità' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_solennita.isBeforeFirst()) {
+                float[] solennita = {0};
+                results.add(solennita);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_solennita.next()) {
+                    count = rs_solennita.getInt("total");
+                }
+                ResultSet rs_solennita_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Solennità' AND idCanzone = '" + idCanzone + "'");
+                while (rs_solennita_avg.next()) {
+                    avg = rs_solennita_avg.getFloat(1);
+                }
+                float[] solennita = {count, avg};
+                results.add(solennita);
+            }
+            
+            ResultSet rs_tenerezza = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Tenerezza' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_tenerezza.isBeforeFirst()) {
+                float[] tenerezza = {0};
+                results.add(tenerezza);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_tenerezza.next()) {
+                    count = rs_tenerezza.getInt("total");
+                }
+                ResultSet rs_tenerezza_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Tenerezza' AND idCanzone = '" + idCanzone + "'");
+                while (rs_tenerezza_avg.next()) {
+                    avg = rs_tenerezza_avg.getFloat(1);
+                }
+                float[] tenerezza = {count, avg};
+                results.add(tenerezza);
+            }
+            
+            ResultSet rs_calma = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Calma' AND idcanzone = '" + idCanzone + "'");
+            
+            if (!rs_calma.isBeforeFirst()) {
+                float[] calma = {0};
+                results.add(calma);
+            } else {
+                float count = 0;
+                float avg = 0;
+                while (rs_calma.next()) {
+                    count = rs_calma.getInt("total");
+                }
+                ResultSet rs_calma_avg = stmt.executeQuery("SELECT AVG(valutazione) FROM public.emozioni WHERE nome = 'Calma' AND idCanzone = '" + idCanzone + "'");
+                while (rs_calma_avg.next()) {
+                    avg = rs_calma_avg.getFloat(1);
+                }
+                float[] calma = {count, avg};
+                results.add(calma);
             }
         }
         catch (SQLException ex)
