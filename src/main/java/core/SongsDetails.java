@@ -2,6 +2,7 @@ package core;
 
 import java.awt.Font;
 import java.util.ArrayList;
+import models.GlobalUserLogin;
 import models.Song;
 
 /**
@@ -24,6 +25,11 @@ public class SongsDetails extends javax.swing.JFrame {
         this.id = id;
         
         initComponents();
+        
+        if (GlobalUserLogin.isUserLogged == false) {
+            btn_addEmotions.setVisible(false);
+            btn_addToPlaylist.setVisible(false);
+        }
         
         Song song = utilities.getSongsById(id);
         
