@@ -8,7 +8,7 @@ import models.Song;
  *
  * @author andre
  */
-public class LoggedDetailedSong extends javax.swing.JFrame {
+public class SongsDetails extends javax.swing.JFrame {
 
     public String id;
     Utilities utilities = new Utilities();
@@ -16,11 +16,11 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
     /**
      * Creates new form LoggedDetailedSong
      */
-    public LoggedDetailedSong() {
+    public SongsDetails() {
         initComponents();
     }
     
-    public LoggedDetailedSong(String id) {
+    public SongsDetails(String id) {
         this.id = id;
         
         initComponents();
@@ -39,63 +39,63 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
             detailedsong_potere.setFont(font);
             detailedsong_potere.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_potere.setText("Questa emozione è stata provata da " + Math.round(results.get(0)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(0)[1] + ".");
+            detailedsong_potere.setText("Questa emozione è stata provata da " + Math.round(results.get(0)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(0)[1]) + ".");
         }
         
         if (results.get(1)[0] == 0.0) {
             detailedsong_gioia.setFont(font);
             detailedsong_gioia.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_gioia.setText("Questa emozione è stata provata da " + Math.round(results.get(1)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(1)[1] + ".");
+            detailedsong_gioia.setText("Questa emozione è stata provata da " + Math.round(results.get(1)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(1)[1]) + ".");
         }
         
         if (results.get(2)[0] == 0.0) {
             detailedsong_tensione.setFont(font);
             detailedsong_tensione.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_tensione.setText("Questa emozione è stata provata da " + Math.round(results.get(2)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(2)[1] + ".");
+            detailedsong_tensione.setText("Questa emozione è stata provata da " + Math.round(results.get(2)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(2)[1]) + ".");
         }
         
         if (results.get(3)[0] == 0.0) {
             detailedsong_nostalgia.setFont(font);
             detailedsong_nostalgia.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_nostalgia.setText("Questa emozione è stata provata da " + Math.round(results.get(3)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(3)[1] + ".");
+            detailedsong_nostalgia.setText("Questa emozione è stata provata da " + Math.round(results.get(3)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(3)[1]) + ".");
         }
         
         if (results.get(4)[0] == 0.0) {
             detailedsong_tristezza.setFont(font);
             detailedsong_tristezza.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_tristezza.setText("Questa emozione è stata provata da " + Math.round(results.get(4)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(4)[1] + ".");
+            detailedsong_tristezza.setText("Questa emozione è stata provata da " + Math.round(results.get(4)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(4)[1]) + ".");
         }
         
         if (results.get(5)[0] == 0.0) {
             detailedsong_stupore.setFont(font);
             detailedsong_stupore.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_stupore.setText("Questa emozione è stata provata da " + Math.round(results.get(5)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(5)[1] + ".");
+            detailedsong_stupore.setText("Questa emozione è stata provata da " + Math.round(results.get(5)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(5)[1])+ ".");
         }
         
         if (results.get(6)[0] == 0.0) {
             detailedsong_solennita.setFont(font);
             detailedsong_solennita.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_solennita.setText("Questa emozione è stata provata da " + Math.round(results.get(6)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(6)[1] + ".");
+            detailedsong_solennita.setText("Questa emozione è stata provata da " + Math.round(results.get(6)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(6)[1]) + ".");
         }
         
         if (results.get(7)[0] == 0.0) {
             detailedsong_tenerezza.setFont(font);
             detailedsong_tenerezza.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_tenerezza.setText("Questa emozione è stata provata da " + Math.round(results.get(7)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(7)[1] + ".");
+            detailedsong_tenerezza.setText("Questa emozione è stata provata da " + Math.round(results.get(7)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(7)[1]) + ".");
         }
         
         if (results.get(8)[0] == 0.0) {
             detailedsong_calma.setFont(font);
             detailedsong_calma.setText("Questa emozione non è stata ancora provata da nessun utente.");
         } else {
-            detailedsong_calma.setText("Questa emozione è stata provata da " + Math.round(results.get(8)[0]) + " utenti ed ha totalizzato una media di intensità di " + results.get(8)[1] + ".");
+            detailedsong_calma.setText("Questa emozione è stata provata da " + Math.round(results.get(8)[0]) + " utenti ed ha totalizzato una media di intensità di " + String.format("%.2f", results.get(8)[1]) + ".");
         }
     }
     
@@ -138,8 +138,11 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
         detailedsong_solennita = new javax.swing.JLabel();
         detailedsong_tenerezza = new javax.swing.JLabel();
         detailedsong_calma = new javax.swing.JLabel();
+        btn_addEmotions = new javax.swing.JButton();
+        btn_addToPlaylist = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dettaglio canzone");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Canzone selezionata:");
@@ -232,6 +235,15 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
         detailedsong_calma.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         detailedsong_calma.setText("calma");
 
+        btn_addEmotions.setText("Aggiungi Emozioni");
+        btn_addEmotions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addEmotionsActionPerformed(evt);
+            }
+        });
+
+        btn_addToPlaylist.setText("Aggiungi a Playlist");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -252,7 +264,12 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(detailedsong_year)
                                     .addComponent(detailedsong_id)
-                                    .addComponent(detailedsong_title)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(detailedsong_title)
+                                        .addGap(316, 316, 316)
+                                        .addComponent(btn_addEmotions)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(btn_addToPlaylist))
                                     .addComponent(detailedsong_author)))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -288,7 +305,7 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel15)))
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +319,9 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(detailedsong_title))
+                    .addComponent(detailedsong_title)
+                    .addComponent(btn_addEmotions)
+                    .addComponent(btn_addToPlaylist))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -380,6 +399,12 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
         search.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btn_addEmotionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addEmotionsActionPerformed
+        dispose();
+        AddEmotions addEmotions = new AddEmotions(id);
+        addEmotions.setVisible(true);
+    }//GEN-LAST:event_btn_addEmotionsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,25 +422,28 @@ public class LoggedDetailedSong extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoggedDetailedSong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SongsDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoggedDetailedSong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SongsDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoggedDetailedSong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SongsDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoggedDetailedSong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SongsDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoggedDetailedSong().setVisible(true);
+                new SongsDetails().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_addEmotions;
+    private javax.swing.JButton btn_addToPlaylist;
     private javax.swing.JLabel detailedsong_author;
     private javax.swing.JLabel detailedsong_calma;
     private javax.swing.JLabel detailedsong_gioia;

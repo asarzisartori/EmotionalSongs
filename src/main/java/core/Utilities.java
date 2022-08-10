@@ -229,8 +229,58 @@ public class Utilities {
         
     }
     
-    public void inserisciEmozioniBrano() {
+    public void inserisciEmozioniBrano(String idutente, String idcanzone, int[] emotions_intensity) {
         
+        String[] emotions = {"Calma", "Gioia", "Nostalgia", "Potere", "Solennità", "Stupore", "Tenerezza", "Tensione", "Tristezza"};
+        
+        try {
+            
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            for (int i = 0; i < emotions.length; i++) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM public.emozioni WHERE nome = '" + emotions[i] + "' AND idutente = '" + idutente + "'");
+                
+                if (!rs.isBeforeFirst()) {
+                    if (emotions_intensity[i] != 0) {
+                        PreparedStatement st = connection.prepareStatement("INSERT INTO public.emozioni (nome, valutazione, idcanzone, idutente) VALUES (?, ?, ?, ?)");
+
+                        st.setString(1, emotions[i]);
+                        st.setInt(2, emotions_intensity[i]);
+                        st.setString(3, idcanzone);
+                        st.setString(4, idutente);
+
+                        st.executeUpdate();
+                        st.close();
+                    }
+                } else {
+                    if (emotions_intensity[i] != 0) {
+                        PreparedStatement st = connection.prepareStatement("UPDATE public.emozioni SET valutazione = ? WHERE nome = ? AND idcanzone = ? AND idutente = ?");
+                    
+                        st.setInt(1, emotions_intensity[i]);
+                        st.setString(2, emotions[i]);
+                        st.setString(3, idcanzone);
+                        st.setString(4, idutente);
+
+                        st.executeUpdate();
+                        st.close();
+                    } else {
+                        PreparedStatement st = connection.prepareStatement("DELETE FROM public.emozioni WHERE nome = ? AND idcanzone = ? AND idutente = ?");
+                        
+                        st.setString(1, emotions[i]);
+                        st.setString(2, idcanzone);
+                        st.setString(3, idutente);
+
+                        st.executeUpdate();
+                        st.close();
+                    }
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -329,6 +379,7 @@ public class Utilities {
     
     public ArrayList<Object[]> GetSongsByAuthorsAndYears(String author, String year) {
         
+        author = author.replace("'", "''");
         ArrayList<Object[]> results = new ArrayList<>();
         
         try
@@ -336,7 +387,7 @@ public class Utilities {
             Connection connection = Connect();
             Statement stmt = connection.createStatement();
             
-            ResultSet rs = stmt.executeQuery("SELECT Id, Anno, Autore, Titolo FROM public.canzoni WHERE autore = '" + author + "' AND anno = '" + year + "'");
+            ResultSet rs = stmt.executeQuery("SELECT Id, Anno, Autore, Titolo FROM public.canzoni WHERE LOWER(Autore) = LOWER('" + author + "') AND anno = '" + year + "'");
             
             if (!rs.isBeforeFirst())
             {
@@ -364,6 +415,7 @@ public class Utilities {
     
     public ArrayList<Object[]> getSongsByTitle(String title) {
         
+        title = title.replace("'", "''");
         ArrayList<Object[]> results = new ArrayList<>();
         
         try

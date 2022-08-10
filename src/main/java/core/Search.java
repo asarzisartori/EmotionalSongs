@@ -33,7 +33,7 @@ public class Search extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 String value = listbox.getModel().getValueAt(listbox.getSelectedRow(), 0).toString();
                 dispose();
-                LoggedDetailedSong loggedDetailedSong = new LoggedDetailedSong(value);
+                SongsDetails loggedDetailedSong = new SongsDetails(value);
                 loggedDetailedSong.setVisible(true);
             }
         });
@@ -84,7 +84,7 @@ public class Search extends javax.swing.JFrame {
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Accesso Libero");
+        setTitle("Ricerca");
 
         titlesong_textfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
