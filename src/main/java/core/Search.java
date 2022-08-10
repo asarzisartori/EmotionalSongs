@@ -265,8 +265,6 @@ public class Search extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_searchByNameActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        GlobalUserLogin.isUserLogged = false;
-        GlobalUserLogin.currentUsername = null;
         dispose();
         EmotionalSongs emotionalSongs = new EmotionalSongs();
         emotionalSongs.setVisible(true);

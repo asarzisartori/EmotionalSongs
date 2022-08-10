@@ -171,8 +171,8 @@ public class EmotionalSongs extends javax.swing.JFrame {
                 GlobalUserLogin.isUserLogged = true;
                 GlobalUserLogin.currentUsername = nickname;
                 dispose();
-                Search search = new Search();
-                search.setVisible(true);
+                LoggedPanel loggedPanel = new LoggedPanel();
+                loggedPanel.setVisible(true);
             }
             else 
             {
