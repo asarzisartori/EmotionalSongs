@@ -2,7 +2,6 @@ package core;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import models.GlobalUserLogin;
 
 /**
  * Classe che gestisce la pagina per la ricerca delle canzoni

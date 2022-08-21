@@ -477,4 +477,110 @@ public class Utilities {
         return song;
     }
     
+    public ArrayList<Object[]> getUserPlaylists(String username) {
+        
+        ArrayList<Object[]> results = new ArrayList<>();
+        
+        try
+        {
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM public.playlist WHERE idutente = '" + username + "'");
+            
+            if (!rs.isBeforeFirst())
+            {
+                return null;
+            }
+            
+            while (rs.next()) {
+               Object[] playlist = new Object[5];
+               
+               playlist[0] = rs.getInt("id");
+               playlist[1] = rs.getString("nome");
+               playlist[2] = rs.getString("descrizione");
+               playlist[3] = rs.getString("genere");
+               playlist[4] = rs.getString("idutente");
+              
+               results.add(playlist);
+            }
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return results;
+    }
+
+    public ArrayList<Object[]> getSongsByPlaylist(int id) {
+
+        ArrayList<String> idcanzoni = new ArrayList<>();
+        ArrayList<Object[]> results = new ArrayList<>();
+        
+        try
+        {
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT idcanzone FROM public.playlistassociate WHERE idplaylist = '" + id + "'");
+            
+            if (!rs.isBeforeFirst())
+            {
+                return null;
+            }
+            
+            while (rs.next()) {
+                idcanzoni.add(rs.getString("idcanzone"));
+            }
+            
+            for (String id_playlist : idcanzoni) {
+                
+                ResultSet rs_playlist = stmt.executeQuery("SELECT * FROM public.canzoni WHERE id = '" + id_playlist + "'");
+                
+                if (!rs_playlist.isBeforeFirst())
+                {
+                    return null;
+                }
+
+                while (rs_playlist.next()) {
+                    Object[] song = new Object[4];
+               
+                    song[0] = rs_playlist.getString("id");
+                    song[1] = rs_playlist.getString("titolo");
+                    song[2] = rs_playlist.getString("autore");
+                    song[3] = rs_playlist.getString("anno");
+
+                    results.add(song);
+                }
+            }
+            
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return results;
+    }
+    
+    public void deletePlaylist(int id) {
+        
+        try
+        {
+            Connection connection = Connect();
+        
+            PreparedStatement st = connection.prepareStatement("DELETE FROM public.playlist WHERE id = ?");
+                        
+            st.setInt(1, id);
+
+            st.executeUpdate();
+            st.close();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

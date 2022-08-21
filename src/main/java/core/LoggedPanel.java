@@ -47,6 +47,11 @@ public class LoggedPanel extends javax.swing.JFrame {
         });
 
         btn_playlist.setText("Playlist");
+        btn_playlist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_playlistActionPerformed(evt);
+            }
+        });
 
         label_welcome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         label_welcome.setText("bienvenido");
@@ -136,6 +141,12 @@ public class LoggedPanel extends javax.swing.JFrame {
         Search search = new Search();
         search.setVisible(true);
     }//GEN-LAST:event_btn_findsongActionPerformed
+
+    private void btn_playlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_playlistActionPerformed
+        dispose();
+        Playlists playlists = new Playlists();
+        playlists.setVisible(true);
+    }//GEN-LAST:event_btn_playlistActionPerformed
 
     /**
      * @param args the command line arguments
