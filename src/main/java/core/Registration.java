@@ -1,5 +1,6 @@
 package core;
 
+import utilities.Utilities;
 import java.util.regex.Pattern;
 
 /**

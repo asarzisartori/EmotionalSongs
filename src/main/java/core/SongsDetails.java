@@ -1,7 +1,15 @@
 package core;
 
+import utilities.Utilities;
 import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import models.GlobalUserLogin;
 import models.Song;
 
@@ -249,6 +257,11 @@ public class SongsDetails extends javax.swing.JFrame {
         });
 
         btn_addToPlaylist.setText("Aggiungi a Playlist");
+        btn_addToPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addToPlaylistActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -268,15 +281,13 @@ public class SongsDetails extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGap(28, 28, 28)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(detailedsong_year)
                                     .addComponent(detailedsong_id)
+                                    .addComponent(detailedsong_title)
+                                    .addComponent(detailedsong_author)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(detailedsong_title)
-                                        .addGap(316, 316, 316)
-                                        .addComponent(btn_addEmotions)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(btn_addToPlaylist))
-                                    .addComponent(detailedsong_author)))
+                                        .addComponent(detailedsong_year)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 458, Short.MAX_VALUE)
+                                        .addComponent(btn_addEmotions))))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +322,9 @@ public class SongsDetails extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel15)))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(btn_addToPlaylist)
+                .addGap(63, 63, 63))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,9 +338,7 @@ public class SongsDetails extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(detailedsong_title)
-                    .addComponent(btn_addEmotions)
-                    .addComponent(btn_addToPlaylist))
+                    .addComponent(detailedsong_title))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -335,8 +346,10 @@ public class SongsDetails extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(detailedsong_year))
-                .addGap(36, 36, 36)
+                    .addComponent(detailedsong_year)
+                    .addComponent(btn_addEmotions)
+                    .addComponent(btn_addToPlaylist))
+                .addGap(35, 35, 35)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -410,6 +423,30 @@ public class SongsDetails extends javax.swing.JFrame {
         AddEmotions addEmotions = new AddEmotions(id);
         addEmotions.setVisible(true);
     }//GEN-LAST:event_btn_addEmotionsActionPerformed
+
+    private void btn_addToPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addToPlaylistActionPerformed
+
+        ArrayList<String> results = utilities.getAllUserPlaylist(GlobalUserLogin.currentUsername);
+        
+        JComboBox playlistList = new JComboBox();
+        
+        for (String playlistname : results) {
+            playlistList.addItem(playlistname);
+        }
+
+        final JComponent[] inputs = new JComponent[] {
+            new JLabel("Scegli fra una delle tue playlist"), 
+            playlistList,
+        };
+
+        int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            String playlist_name = playlistList.getSelectedItem().toString();
+            utilities.insertSongInPlaylist(id, utilities.getPlaylistIdByName(playlist_name));      
+        } else {
+            System.out.println("User canceled / closed the dialog, result = " + result);
+        }
+    }//GEN-LAST:event_btn_addToPlaylistActionPerformed
 
     /**
      * @param args the command line arguments

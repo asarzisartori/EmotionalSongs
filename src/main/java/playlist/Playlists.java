@@ -1,5 +1,7 @@
-package core;
+package playlist;
 
+import core.LoggedPanel;
+import utilities.Utilities;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import models.GlobalUserLogin;

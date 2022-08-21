@@ -1,4 +1,6 @@
-package core;
+package playlist;
+
+import utilities.Utilities;
 
 /**
  *
@@ -45,6 +47,12 @@ public class PlaylistCreation extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Genere");
+
+        txt_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nameActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel9.setText("Creazione Playlist");
@@ -161,6 +169,10 @@ public class PlaylistCreation extends javax.swing.JFrame {
         Playlists playlists = new Playlists();
         playlists.setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void txt_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nameActionPerformed
 
     /**
      * @param args the command line arguments

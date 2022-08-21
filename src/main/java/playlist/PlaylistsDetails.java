@@ -1,5 +1,6 @@
-package core;
+package playlist;
 
+import utilities.Utilities;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JLabel;

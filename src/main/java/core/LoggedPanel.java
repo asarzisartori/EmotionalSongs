@@ -1,5 +1,6 @@
 package core;
 
+import playlist.Playlists;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import models.GlobalUserLogin;

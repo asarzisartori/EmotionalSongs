@@ -9,6 +9,7 @@
  */
 package core;
 
+import utilities.Utilities;
 import models.GlobalUserLogin;
 
 /**
