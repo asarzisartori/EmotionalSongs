@@ -16,6 +16,7 @@ public class PlaylistsDetails extends javax.swing.JFrame {
 
     Utilities utilities = new Utilities();
     private int idPlaylist;
+    private String currentSongId = null;
     
     /**
      * Creates new form PlaylistsDetails
@@ -30,12 +31,18 @@ public class PlaylistsDetails extends javax.swing.JFrame {
         this.idPlaylist = value;
         
         ArrayList<Object[]> playlistlist = utilities.getSongsByPlaylist(value);
-        
-        DefaultTableModel listModel = (DefaultTableModel)listbox.getModel();
         listbox.removeColumn(listbox.getColumnModel().getColumn(0));
+        
+        listbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                currentSongId = listbox.getModel().getValueAt(listbox.getSelectedRow(), 0).toString();
+            }
+        });
 
         if (playlistlist != null) {
 
+            DefaultTableModel listModel = (DefaultTableModel)listbox.getModel();
             listModel.setRowCount(0);
 
             for (Object[] item : playlistlist)
@@ -169,7 +176,25 @@ public class PlaylistsDetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_deleteSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteSongActionPerformed
-        // TODO add your handling code here:
+        if (currentSongId != null) {
+            utilities.deleteSinglePlaylistSong(currentSongId, idPlaylist);
+            currentSongId = null;
+            
+            ArrayList<Object[]> updated_playlistlist = utilities.getSongsByPlaylist(idPlaylist);
+            DefaultTableModel listModel = (DefaultTableModel)listbox.getModel();    
+            
+            if (updated_playlistlist != null) {    
+               
+                listModel.setRowCount(0);
+
+                for (Object[] item : updated_playlistlist)
+                {
+                    listModel.addRow(item);
+                }       
+            } else {
+                listModel.removeRow(0);
+            }
+        }
     }//GEN-LAST:event_btn_deleteSongActionPerformed
 
     private void btn_deletePlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletePlaylistActionPerformed

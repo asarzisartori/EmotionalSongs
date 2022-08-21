@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.GlobalUserLogin;
 import models.Song;
 
 public class Utilities {
@@ -225,8 +226,26 @@ public class Utilities {
         return results;
     }
     
-    public void registraPlaylist() {
+    public void registraPlaylist(String nome, String descrizione, String genere) {
         
+        try {
+            
+            Connection connection = Connect();
+            
+            PreparedStatement st = connection.prepareStatement("INSERT INTO playlist (nome, descrizione, genere, idutente)"
+                                                               + "VALUES (?, ?, ?, ?)");
+            
+            st.setString(1, nome);
+            st.setString(2, descrizione);
+            st.setString(3, genere);
+            st.setString(4, GlobalUserLogin.currentUsername);
+            
+            st.executeUpdate();
+            st.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void inserisciEmozioniBrano(String idutente, String idcanzone, int[] emotions_intensity) {
@@ -573,6 +592,26 @@ public class Utilities {
             PreparedStatement st = connection.prepareStatement("DELETE FROM public.playlist WHERE id = ?");
                         
             st.setInt(1, id);
+
+            st.executeUpdate();
+            st.close();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteSinglePlaylistSong(String idcanzone, int idplaylist) {
+        
+        try
+        {
+            Connection connection = Connect();
+        
+            PreparedStatement st = connection.prepareStatement("DELETE FROM public.playlistassociate WHERE idcanzone = ? AND idplaylist = ?");
+                        
+            st.setString(1, idcanzone);
+            st.setInt(2, idplaylist);
 
             st.executeUpdate();
             st.close();
