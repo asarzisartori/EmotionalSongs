@@ -1,4 +1,4 @@
-package core;
+package songs;
 
 import utilities.Utilities;
 import java.awt.Font;
@@ -7,9 +7,6 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import utilities.GlobalUserLogin;
 import models.Song;
 
@@ -27,12 +24,14 @@ public class SongsDetails extends javax.swing.JFrame {
      */
     public SongsDetails() {
         initComponents();
+        Utilities.setLogo(this);
     }
     
     public SongsDetails(String id) {
         this.id = id;
         
         initComponents();
+        Utilities.setLogo(this);
         
         if (GlobalUserLogin.isUserLogged == false) {
             btn_addEmotions.setVisible(false);
@@ -442,7 +441,7 @@ public class SongsDetails extends javax.swing.JFrame {
                 playlistList,
             };
 
-            int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.PLAIN_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(null, inputs, "Scelta playlist", JOptionPane.PLAIN_MESSAGE);
             if (result == JOptionPane.OK_OPTION) {
                 
                 String playlist_name = playlistList.getSelectedItem().toString();

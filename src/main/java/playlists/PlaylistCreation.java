@@ -1,4 +1,4 @@
-package playlist;
+package playlists;
 
 import utilities.GlobalUserLogin;
 import utilities.Utilities;
@@ -16,6 +16,7 @@ public class PlaylistCreation extends javax.swing.JFrame {
      */
     public PlaylistCreation() {
         initComponents();
+        Utilities.setLogo(this);
     }
 
     /**

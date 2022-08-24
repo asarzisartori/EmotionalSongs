@@ -1,5 +1,6 @@
-package core;
+package songs;
 
+import javax.swing.ImageIcon;
 import utilities.Utilities;
 import javax.swing.JFrame;
 import javax.swing.JSpinner.DefaultEditor;
@@ -19,12 +20,14 @@ public class AddEmotions extends javax.swing.JFrame {
      */
     public AddEmotions() {
         initComponents();
+        Utilities.setLogo(this);
     }
     
     public AddEmotions(String idCanzone) {
         this.idCanzone = idCanzone;
         
         initComponents();
+        Utilities.setLogo(this);
         
         //Impedisco che i vari spinner possano essere editati manualmente nel textfield
         ((DefaultEditor) spinner_calma.getEditor()).getTextField().setEditable(false);

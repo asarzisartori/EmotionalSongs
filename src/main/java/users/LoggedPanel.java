@@ -1,9 +1,18 @@
-package core;
+package users;
 
-import playlist.Playlists;
+import core.EmotionalSongs;
+import songs.Search;
+import playlists.Playlists;
 import java.awt.Cursor;
+import java.awt.Font;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import utilities.GlobalUserLogin;
+import utilities.Utilities;
 
 /**
  *
@@ -11,6 +20,8 @@ import utilities.GlobalUserLogin;
  */
 public class LoggedPanel extends javax.swing.JFrame {
 
+    Utilities utilities = new Utilities();
+    
     /**
      * Creates new form LoggedPanel
      */
@@ -20,6 +31,8 @@ public class LoggedPanel extends javax.swing.JFrame {
         label_welcome.setText("Benvenuto, " + GlobalUserLogin.currentUsername + "");
         label_personalinfo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         label_personalinfo.setText("<HTML><U>Le mie info</U></HTML>");
+        
+        Utilities.setLogo(this);
     }
 
     /**
@@ -127,7 +140,39 @@ public class LoggedPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void label_personalinfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_personalinfoMouseClicked
-        JOptionPane.showMessageDialog(null, "Bisogna implementare la visualizzazione delle proprie info TRANNE la password (obv)");
+
+        ArrayList<String> results = utilities.getAllUserInfo(GlobalUserLogin.currentUsername);
+        Font font = new Font("Arial Black", Font.ITALIC, 12);
+        
+        JLabel nome = new JLabel("Nome:", SwingConstants.CENTER);
+        nome.setFont(font);
+
+        JLabel cognome = new JLabel("Cognome:", SwingConstants.CENTER);
+        cognome.setFont(font);
+        
+        JLabel cf = new JLabel("CF:", SwingConstants.CENTER);
+        cf.setFont(font);
+
+        JLabel indirizzo = new JLabel("Indirizzo:", SwingConstants.CENTER);
+        indirizzo.setFont(font);
+
+        JLabel email = new JLabel("Email:", SwingConstants.CENTER);
+        email.setFont(font);
+        
+        final JComponent[] inputs = new JComponent[] {
+            nome,
+            new JLabel(results.get(0), SwingConstants.CENTER),
+            cognome,
+            new JLabel(results.get(1), SwingConstants.CENTER),
+            cf,
+            new JLabel(results.get(2), SwingConstants.CENTER),
+            indirizzo,
+            new JLabel(results.get(3), SwingConstants.CENTER),
+            email,
+            new JLabel(results.get(4), SwingConstants.CENTER)
+        };
+
+        JOptionPane.showConfirmDialog(null, inputs, "Le mie info", JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_label_personalinfoMouseClicked
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed

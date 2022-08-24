@@ -1,5 +1,7 @@
-package core;
+package songs;
 
+import core.EmotionalSongs;
+import users.LoggedPanel;
 import utilities.Utilities;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +21,7 @@ public class Search extends javax.swing.JFrame {
      */
     public Search() {
         initComponents();
+        Utilities.setLogo(this);
         
         //La ricerca è impostata di default su quella del Nome
         searchauthor_label.setVisible(false);

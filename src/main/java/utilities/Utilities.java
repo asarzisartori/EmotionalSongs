@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import models.Song;
 
 public class Utilities {
@@ -732,7 +734,7 @@ public class Utilities {
             Connection connection = Connect();
             Statement stmt = connection.createStatement();
             
-            ResultSet rs = stmt.executeQuery("SELECT * FROM public.playlist WHERE name = '" + name + "' AND idutente = '" + username + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM public.playlist WHERE nome = '" + name + "' AND idutente = '" + username + "'");
             
             if (!rs.isBeforeFirst())
             {
@@ -749,6 +751,43 @@ public class Utilities {
         }
         
         return checkIfAlreadyRegistered;
+    }
+    
+    public ArrayList<String> getAllUserInfo(String username) {
+
+        ArrayList<String> results = new ArrayList<>();
+        
+        try
+        {
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM public.utentiregistrati WHERE username = '" + username + "'");
+            
+            if (!rs.isBeforeFirst())
+            {
+                return null;
+            }
+            
+            while (rs.next()) {
+               results.add(rs.getString("nome"));
+               results.add(rs.getString("cognome"));
+               results.add(rs.getString("cf"));
+               results.add(rs.getString("indirizzo"));
+               results.add(rs.getString("email"));
+            }
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return results;
+    }
+    
+    public static void setLogo(JFrame jframe) {
+        ImageIcon img = new ImageIcon("C:\\Users\\andre\\Documents\\NetBeansProjects\\emotionalsongs\\src\\main\\java\\images/logo.png");
+        jframe.setIconImage(img.getImage());
     }
     
 }

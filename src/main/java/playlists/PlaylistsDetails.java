@@ -1,11 +1,10 @@
-package playlist;
+package playlists;
 
 import utilities.Utilities;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,10 +23,12 @@ public class PlaylistsDetails extends javax.swing.JFrame {
      */
     public PlaylistsDetails() {
         initComponents();
+        Utilities.setLogo(this);
     }
     
     public PlaylistsDetails(int value) {
         initComponents();
+        Utilities.setLogo(this);
         
         this.idPlaylist = value;
         
@@ -175,6 +176,7 @@ public class PlaylistsDetails extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_deleteSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteSongActionPerformed

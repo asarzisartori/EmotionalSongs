@@ -1,6 +1,6 @@
-package playlist;
+package playlists;
 
-import core.LoggedPanel;
+import users.LoggedPanel;
 import utilities.Utilities;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +19,7 @@ public class Playlists extends javax.swing.JFrame {
      */
     public Playlists() {
         initComponents();
+        Utilities.setLogo(this);
         
         DefaultTableModel listModel = (DefaultTableModel)listbox.getModel();
 

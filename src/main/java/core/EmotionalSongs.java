@@ -9,6 +9,10 @@
  */
 package core;
 
+import users.LoggedPanel;
+import users.Registration;
+import songs.Search;
+import javax.swing.ImageIcon;
 import utilities.Utilities;
 import utilities.GlobalUserLogin;
 
@@ -26,6 +30,7 @@ public class EmotionalSongs extends javax.swing.JFrame {
      */
     public EmotionalSongs() {
         initComponents();
+        Utilities.setLogo(this);
     }
 
     /**

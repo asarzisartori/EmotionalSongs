@@ -1,5 +1,6 @@
-package core;
+package users;
 
+import core.EmotionalSongs;
 import utilities.Utilities;
 import java.util.regex.Pattern;
 
@@ -17,6 +18,7 @@ public class Registration extends javax.swing.JFrame {
      */
     public Registration() {
         initComponents();
+        Utilities.setLogo(this);
     }
 
     /**
