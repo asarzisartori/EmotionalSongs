@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import models.GlobalUserLogin;
+import utilities.GlobalUserLogin;
 import models.Song;
 
 /**
@@ -428,23 +428,34 @@ public class SongsDetails extends javax.swing.JFrame {
 
         ArrayList<String> results = utilities.getAllUserPlaylist(GlobalUserLogin.currentUsername);
         
-        JComboBox playlistList = new JComboBox();
-        
-        for (String playlistname : results) {
-            playlistList.addItem(playlistname);
-        }
-
-        final JComponent[] inputs = new JComponent[] {
-            new JLabel("Scegli fra una delle tue playlist"), 
-            playlistList,
-        };
-
-        int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.PLAIN_MESSAGE);
-        if (result == JOptionPane.OK_OPTION) {
-            String playlist_name = playlistList.getSelectedItem().toString();
-            utilities.insertSongInPlaylist(id, utilities.getPlaylistIdByName(playlist_name));      
+        if (results == null) {
+            javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Non è possibile effettuare questa operazione, nessuna playlist disponibile.", "Attenzione", javax.swing.JOptionPane.WARNING_MESSAGE);
         } else {
-            System.out.println("User canceled / closed the dialog, result = " + result);
+            JComboBox playlistList = new JComboBox();
+        
+            for (String playlistname : results) {
+                playlistList.addItem(playlistname);
+            }
+
+            final JComponent[] inputs = new JComponent[] {
+                new JLabel("Scegli fra una delle tue playlist:"), 
+                playlistList,
+            };
+
+            int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION) {
+                
+                String playlist_name = playlistList.getSelectedItem().toString();
+                int playlist_id = utilities.getPlaylistIdByName(playlist_name);
+                Boolean check = utilities.checkIfSongInPlaylist(id, playlist_id);
+                
+                if (check) {
+                    javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Non è possibile effettuare questa operazione, in questa playlist è già presente questa canzone!", "Attenzione", javax.swing.JOptionPane.WARNING_MESSAGE);
+                } else {
+                    utilities.insertSongInPlaylist(id, playlist_id);
+                    javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Inserimento della canzone nella playlist completato.", "Completato", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
         }
     }//GEN-LAST:event_btn_addToPlaylistActionPerformed
 

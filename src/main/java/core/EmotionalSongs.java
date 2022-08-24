@@ -10,7 +10,7 @@
 package core;
 
 import utilities.Utilities;
-import models.GlobalUserLogin;
+import utilities.GlobalUserLogin;
 
 /**
  * Classe che permette di fare Login, Registrarsi o accedere all'Accesso Libero dell'applicazione EmotionalSongs

@@ -3,6 +3,7 @@ package core;
 import utilities.Utilities;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import utilities.GlobalUserLogin;
 
 /**
  * Classe che gestisce la pagina per la ricerca delle canzoni
@@ -266,8 +267,14 @@ public class Search extends javax.swing.JFrame {
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         dispose();
-        EmotionalSongs emotionalSongs = new EmotionalSongs();
-        emotionalSongs.setVisible(true);
+        
+        if (GlobalUserLogin.isUserLogged == true) {
+            LoggedPanel loggedPanel = new LoggedPanel();
+            loggedPanel.setVisible(true);
+        } else {
+            EmotionalSongs emotionalSongs = new EmotionalSongs();
+            emotionalSongs.setVisible(true);
+        }
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void yearsong_textfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearsong_textfieldActionPerformed

@@ -3,7 +3,7 @@ package core;
 import utilities.Utilities;
 import javax.swing.JFrame;
 import javax.swing.JSpinner.DefaultEditor;
-import models.GlobalUserLogin;
+import utilities.GlobalUserLogin;
 
 /**
  *

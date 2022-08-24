@@ -1,5 +1,6 @@
 package playlist;
 
+import utilities.GlobalUserLogin;
 import utilities.Utilities;
 
 /**
@@ -38,6 +39,7 @@ public class PlaylistCreation extends javax.swing.JFrame {
         btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Creazione playlist");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Nome");
@@ -145,6 +147,7 @@ public class PlaylistCreation extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
@@ -152,15 +155,25 @@ public class PlaylistCreation extends javax.swing.JFrame {
         String descrizione= txt_description.getText();
         String genere = txt_genre.getText();
         
+        Boolean check = utilities.checkIfPlaylistNameAlreadyExist(nome, GlobalUserLogin.currentUsername);
         
         Boolean ok =
         !nome.equals("") &&
         !descrizione.equals("") &&
         !genere.equals("");
         
-        if (ok) {
-            utilities.registraPlaylist(nome, descrizione, genere);
-            javax.swing.JOptionPane.showMessageDialog(getContentPane(), "La playlist " + nome + " è stata creata!", "Completato", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        if (!ok) {
+            javax.swing.JOptionPane.showMessageDialog(getContentPane(), "L'inserimento di alcuni campi non è stato completato!", "Attenzione", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (check) {
+                javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Una playlist con lo stesso nome esiste già con il tuo account!", "Attenzione", javax.swing.JOptionPane.WARNING_MESSAGE);
+            } else {
+                utilities.registraPlaylist(nome, descrizione, genere);
+                javax.swing.JOptionPane.showMessageDialog(getContentPane(), "La playlist " + nome + " è stata creata!", "Completato", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                Playlists playlist = new Playlists();
+                playlist.setVisible(true);
+            }         
         }
     }//GEN-LAST:event_btn_createActionPerformed
 

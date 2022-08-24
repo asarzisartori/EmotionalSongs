@@ -3,7 +3,7 @@ package core;
 import playlist.Playlists;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
-import models.GlobalUserLogin;
+import utilities.GlobalUserLogin;
 
 /**
  *
@@ -17,6 +17,7 @@ public class LoggedPanel extends javax.swing.JFrame {
     public LoggedPanel() {
         initComponents();
         
+        label_welcome.setText("Benvenuto, " + GlobalUserLogin.currentUsername + "");
         label_personalinfo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         label_personalinfo.setText("<HTML><U>Le mie info</U></HTML>");
     }

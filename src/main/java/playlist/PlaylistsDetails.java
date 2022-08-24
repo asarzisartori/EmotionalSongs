@@ -70,6 +70,7 @@ public class PlaylistsDetails extends javax.swing.JFrame {
         btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dettaglio playlist");
 
         listbox.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

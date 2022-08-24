@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.GlobalUserLogin;
 import models.Song;
 
 public class Utilities {
@@ -640,7 +639,7 @@ public class Utilities {
 
             while (rs.next()) {
                 results.add(rs.getString("nome"));
-            }  
+            }
         }
         catch (SQLException ex)
         {
@@ -648,6 +647,34 @@ public class Utilities {
         }
         
         return results;
+    }
+    
+     public Boolean checkIfSongInPlaylist(String idcanzone, int idplaylist) {
+        
+        Boolean checkIfSongInPlaylist = false;
+        
+        try
+        {
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM public.playlistassociate WHERE idcanzone = '" + idcanzone + "' AND idplaylist = " + idplaylist + "");
+            
+            if (!rs.isBeforeFirst())
+            {
+                return checkIfSongInPlaylist;
+            }
+            
+            checkIfSongInPlaylist = true;
+            
+            return checkIfSongInPlaylist;
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return checkIfSongInPlaylist;
     }
     
     public void insertSongInPlaylist(String idcanzone, int idplaylist) {
@@ -694,6 +721,34 @@ public class Utilities {
         }
         
         return id;
+    }
+    
+    public Boolean checkIfPlaylistNameAlreadyExist(String name, String username) {
+        
+        Boolean checkIfAlreadyRegistered = false;
+        
+        try
+        {
+            Connection connection = Connect();
+            Statement stmt = connection.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM public.playlist WHERE name = '" + name + "' AND idutente = '" + username + "'");
+            
+            if (!rs.isBeforeFirst())
+            {
+                return checkIfAlreadyRegistered;
+            }
+            
+            checkIfAlreadyRegistered = true;
+            
+            return checkIfAlreadyRegistered;
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return checkIfAlreadyRegistered;
     }
     
 }
