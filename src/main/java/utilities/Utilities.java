@@ -21,7 +21,7 @@ public class Utilities {
     private final String password = "admin";
     
     //Permette la connessione al database
-    public Connection Connect() {
+    public Connection connect() {
         
         Connection connection = null;
         
@@ -35,17 +35,13 @@ public class Utilities {
         return connection; 
     }
     
-    public void cercaBranoMusicale() {
-        
-    }
-    
     public ArrayList<float[]> visualizzaEmozioneBrano(String idCanzone) {
         
         ArrayList<float[]> results = new ArrayList<>();
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs_potere = stmt.executeQuery("SELECT COUNT (*) AS total FROM public.emozioni WHERE nome = 'Potere' AND idcanzone = '" + idCanzone + "'");
@@ -231,7 +227,7 @@ public class Utilities {
         
         try {
             
-            Connection connection = Connect();
+            Connection connection = connect();
             
             PreparedStatement st = connection.prepareStatement("INSERT INTO playlist (nome, descrizione, genere, idutente)"
                                                                + "VALUES (?, ?, ?, ?)");
@@ -255,7 +251,7 @@ public class Utilities {
         
         try {
             
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             for (int i = 0; i < emotions.length; i++) {
@@ -313,11 +309,11 @@ public class Utilities {
      * @param username    Nickname scelto del cliente da registrare
      * @param password    Password scelta del cliente da registrare
      */
-    public void Registrazione(String nome, String cognome, String CF, String indirizzo, String email, String username, String password) {
+    public void registrazione(String nome, String cognome, String CF, String indirizzo, String email, String username, String password) {
         
         try {
             
-            Connection connection = Connect();
+            Connection connection = connect();
             
             PreparedStatement st = connection.prepareStatement("INSERT INTO utentiregistrati (nome, cognome, CF, indirizzo, email, username, password)"
                                                                + "VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -340,13 +336,13 @@ public class Utilities {
     }
     
     
-    public Boolean CheckIfAlreadyRegistered(String column, String info) {
+    public Boolean checkIfAlreadyRegistered(String column, String info) {
         
         Boolean checkIfAlreadyRegistered = false;
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM public.utentiregistrati WHERE " + column + " = '" + info + "'");
@@ -369,13 +365,13 @@ public class Utilities {
     }
     
     
-    public Boolean CheckIfUserIsRegistered(String username, String password) {
+    public Boolean checkIfUserIsRegistered(String username, String password) {
         
         Boolean checkIfUserIsRegistered = false;
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM public.utentiregistrati WHERE username = '" + username + "' AND password = '" + password + "'");
@@ -397,14 +393,14 @@ public class Utilities {
         return checkIfUserIsRegistered;
     }
     
-    public ArrayList<Object[]> GetSongsByAuthorsAndYears(String author, String year) {
+    public ArrayList<Object[]> cercaBranoMusicaleDaAutoreAnno(String author, String year) {
         
         author = author.replace("'", "''");
         ArrayList<Object[]> results = new ArrayList<>();
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT Id, Anno, Autore, Titolo FROM public.canzoni WHERE LOWER(Autore) = LOWER('" + author + "') AND anno = '" + year + "'");
@@ -433,14 +429,14 @@ public class Utilities {
         return results;
     }
     
-    public ArrayList<Object[]> getSongsByTitle(String title) {
+    public ArrayList<Object[]> cercaBranoMusicaleDaTitolo(String title) {
         
         title = title.replace("'", "''");
         ArrayList<Object[]> results = new ArrayList<>();
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT Id, Anno, Autore, Titolo FROM public.canzoni WHERE LOWER(Titolo) LIKE LOWER('%" + title + "%')");
@@ -475,7 +471,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM public.canzoni WHERE id = '" + id + "'");
@@ -503,7 +499,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM public.playlist WHERE idutente = '" + username + "'");
@@ -540,7 +536,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT idcanzone FROM public.playlistassociate WHERE idplaylist = '" + id + "'");
@@ -588,7 +584,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
         
             PreparedStatement st = connection.prepareStatement("DELETE FROM public.playlist WHERE id = ?");
                         
@@ -607,7 +603,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
         
             PreparedStatement st = connection.prepareStatement("DELETE FROM public.playlistassociate WHERE idcanzone = ? AND idplaylist = ?");
                         
@@ -629,7 +625,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT nome FROM public.playlist WHERE idutente = '" + id + "'");
@@ -657,7 +653,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM public.playlistassociate WHERE idcanzone = '" + idcanzone + "' AND idplaylist = " + idplaylist + "");
@@ -682,7 +678,7 @@ public class Utilities {
     public void insertSongInPlaylist(String idcanzone, int idplaylist) {
         
         try {
-            Connection connection = Connect();
+            Connection connection = connect();
             PreparedStatement st = connection.prepareStatement("INSERT INTO playlistassociate (idcanzone, idplaylist)"
                                                                + "VALUES (?, ?)");
             
@@ -703,7 +699,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT id FROM public.playlist WHERE nome = '" + name + "'");
@@ -731,7 +727,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM public.playlist WHERE nome = '" + name + "' AND idutente = '" + username + "'");
@@ -759,7 +755,7 @@ public class Utilities {
         
         try
         {
-            Connection connection = Connect();
+            Connection connection = connect();
             Statement stmt = connection.createStatement();
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM public.utentiregistrati WHERE username = '" + username + "'");

@@ -1,6 +1,6 @@
 package songs;
 
-import core.EmotionalSongs;
+import emotionalsongs.EmotionalSongs;
 import users.LoggedPanel;
 import utilities.Utilities;
 import java.util.ArrayList;
@@ -246,7 +246,7 @@ public class Search extends javax.swing.JFrame {
         
         if (!searchedName.equals("")) {
             
-            ArrayList<Object[]> results = utilities.getSongsByTitle(searchedName);        
+            ArrayList<Object[]> results = utilities.cercaBranoMusicaleDaTitolo(searchedName);        
 
             if (results != null) {
 
@@ -306,7 +306,7 @@ public class Search extends javax.swing.JFrame {
         
         if (!author.equals("") && !year.equals("") && yearIsNumeric) {
             
-            ArrayList<Object[]> results = utilities.GetSongsByAuthorsAndYears(author, year);        
+            ArrayList<Object[]> results = utilities.cercaBranoMusicaleDaAutoreAnno(author, year);        
 
             if (results != null) {
 

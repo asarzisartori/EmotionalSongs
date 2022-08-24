@@ -1,6 +1,6 @@
 package users;
 
-import core.EmotionalSongs;
+import emotionalsongs.EmotionalSongs;
 import songs.Search;
 import playlists.Playlists;
 import java.awt.Cursor;

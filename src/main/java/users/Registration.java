@@ -1,6 +1,6 @@
 package users;
 
-import core.EmotionalSongs;
+import emotionalsongs.EmotionalSongs;
 import utilities.Utilities;
 import java.util.regex.Pattern;
 
@@ -237,12 +237,12 @@ public class Registration extends javax.swing.JFrame {
         
         if (ok) {
             
-            Boolean checkUsername = utilities.CheckIfAlreadyRegistered("username", username);
-            Boolean checkEmail = utilities.CheckIfAlreadyRegistered("email", email);
+            Boolean checkUsername = utilities.checkIfAlreadyRegistered("username", username);
+            Boolean checkEmail = utilities.checkIfAlreadyRegistered("email", email);
 
             if (!checkUsername && !checkEmail)
             {
-                utilities.Registrazione(nome, cognome, CF, indirizzo, email, username, first_password);
+                utilities.registrazione(nome, cognome, CF, indirizzo, email, username, first_password);
                 javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Registrazione completata con successo!", "", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
                 dispose();

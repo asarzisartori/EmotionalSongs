@@ -7,7 +7,7 @@
  * 726694
  * Varese
  */
-package core;
+package emotionalsongs;
 
 import users.LoggedPanel;
 import users.Registration;
@@ -170,7 +170,7 @@ public class EmotionalSongs extends javax.swing.JFrame {
         
         if (!nickname.equals("") && !password.equals(""))
         {
-            Boolean checkIfUserIsRegistered = utilities.CheckIfUserIsRegistered(nickname, password);
+            Boolean checkIfUserIsRegistered = utilities.checkIfUserIsRegistered(nickname, password);
             
             if (checkIfUserIsRegistered)
             {
