@@ -6,7 +6,6 @@ import playlists.Playlists;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,7 +27,7 @@ public class LoggedPanel extends javax.swing.JFrame {
     public LoggedPanel() {
         initComponents();
         
-        label_welcome.setText("Benvenuto, " + GlobalUserLogin.currentUsername + "");
+        label_welcome.setText("Benvenut*, " + GlobalUserLogin.currentUsername + "");
         label_personalinfo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         label_personalinfo.setText("<HTML><U>Le mie info</U></HTML>");
         
@@ -50,9 +49,14 @@ public class LoggedPanel extends javax.swing.JFrame {
         label_welcome = new javax.swing.JLabel();
         label_personalinfo = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pannello utente");
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(650, 300));
 
         btn_findsong.setText(" Cerca canzone");
         btn_findsong.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +73,8 @@ public class LoggedPanel extends javax.swing.JFrame {
         });
 
         label_welcome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        label_welcome.setText("bienvenido");
+        label_welcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_welcome.setText("Benvenut*, ");
 
         label_personalinfo.setForeground(new java.awt.Color(102, 0, 153));
         label_personalinfo.setText("Le mie info");
@@ -86,42 +91,65 @@ public class LoggedPanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\andre\\Documents\\NetBeansProjects\\emotionalsongs\\src\\main\\java\\images\\search.png")); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\andre\\Documents\\NetBeansProjects\\emotionalsongs\\src\\main\\java\\images\\playlist.png")); // NOI18N
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\andre\\Documents\\NetBeansProjects\\emotionalsongs\\src\\main\\java\\images\\user.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(label_welcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(152, 152, 152)
+                                .addComponent(btn_findsong)
+                                .addGap(152, 152, 152)
+                                .addComponent(btn_playlist))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(184, 184, 184)
+                                .addComponent(jLabel2)
+                                .addGap(193, 193, 193)
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(276, 276, 276)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(302, 302, 302)
+                                .addComponent(label_personalinfo)))
+                        .addGap(0, 158, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_personalinfo)
-                    .addComponent(btn_back))
-                .addGap(304, 304, 304))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_findsong)
-                        .addGap(79, 79, 79)
-                        .addComponent(btn_playlist)
-                        .addGap(225, 225, 225))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(label_welcome)
-                        .addGap(292, 292, 292))))
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(279, 279, 279))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(label_welcome)
-                .addGap(38, 38, 38)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_playlist)
                     .addComponent(btn_findsong))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(label_personalinfo)
-                .addGap(44, 44, 44)
+                .addGap(34, 34, 34)
                 .addComponent(btn_back)
-                .addGap(32, 32, 32))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,24 +160,32 @@ public class LoggedPanel extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        GlobalUserLogin.isUserLogged = false;
+        GlobalUserLogin.currentUsername = null;
+        dispose();
+        EmotionalSongs emotionalSongs = new EmotionalSongs();
+        emotionalSongs.setVisible(true);
+    }//GEN-LAST:event_btn_backActionPerformed
+
     private void label_personalinfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_personalinfoMouseClicked
 
         ArrayList<String> results = utilities.getAllUserInfo(GlobalUserLogin.currentUsername);
         Font font = new Font("Arial Black", Font.ITALIC, 12);
-        
+
         JLabel nome = new JLabel("Nome:", SwingConstants.CENTER);
         nome.setFont(font);
 
         JLabel cognome = new JLabel("Cognome:", SwingConstants.CENTER);
         cognome.setFont(font);
-        
+
         JLabel cf = new JLabel("CF:", SwingConstants.CENTER);
         cf.setFont(font);
 
@@ -158,7 +194,7 @@ public class LoggedPanel extends javax.swing.JFrame {
 
         JLabel email = new JLabel("Email:", SwingConstants.CENTER);
         email.setFont(font);
-        
+
         final JComponent[] inputs = new JComponent[] {
             nome,
             new JLabel(results.get(0), SwingConstants.CENTER),
@@ -175,25 +211,17 @@ public class LoggedPanel extends javax.swing.JFrame {
         JOptionPane.showConfirmDialog(null, inputs, "Le mie info", JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_label_personalinfoMouseClicked
 
-    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        GlobalUserLogin.isUserLogged = false;
-        GlobalUserLogin.currentUsername = null;
+    private void btn_playlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_playlistActionPerformed
         dispose();
-        EmotionalSongs emotionalSongs = new EmotionalSongs();
-        emotionalSongs.setVisible(true);
-    }//GEN-LAST:event_btn_backActionPerformed
+        Playlists playlists = new Playlists();
+        playlists.setVisible(true);
+    }//GEN-LAST:event_btn_playlistActionPerformed
 
     private void btn_findsongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_findsongActionPerformed
         dispose();
         Search search = new Search();
         search.setVisible(true);
     }//GEN-LAST:event_btn_findsongActionPerformed
-
-    private void btn_playlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_playlistActionPerformed
-        dispose();
-        Playlists playlists = new Playlists();
-        playlists.setVisible(true);
-    }//GEN-LAST:event_btn_playlistActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,6 +262,9 @@ public class LoggedPanel extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_findsong;
     private javax.swing.JButton btn_playlist;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_personalinfo;
     private javax.swing.JLabel label_welcome;

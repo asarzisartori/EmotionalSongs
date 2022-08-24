@@ -1,8 +1,10 @@
 package users;
 
 import emotionalsongs.EmotionalSongs;
+import java.awt.Image;
 import utilities.Utilities;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 
 /**
  * Classe che gestisce la registrazione del cliente
@@ -49,7 +51,7 @@ public class Registration extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btm_back = new javax.swing.JButton();
         btm_register = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        img = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrazione");
@@ -174,8 +176,7 @@ public class Registration extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel9.setText("Registrazione Cliente");
+        img.setIcon(new javax.swing.ImageIcon("C:\\Users\\andre\\Documents\\NetBeansProjects\\emotionalsongs\\src\\main\\java\\images\\registration.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,15 +189,15 @@ public class Registration extends javax.swing.JFrame {
                         .addComponent(pnl_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146))))
+                        .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(257, 257, 257))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(23, 23, 23)
+                .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(pnl_main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -316,6 +317,7 @@ public class Registration extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btm_back;
     private javax.swing.JButton btm_register;
+    private javax.swing.JLabel img;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -324,7 +326,6 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel pnl_main;
     private javax.swing.JPasswordField psw_first;
     private javax.swing.JPasswordField psw_second;
